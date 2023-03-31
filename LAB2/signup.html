@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up page</title>
+    <link rel = "stylesheet" type = "text/css" href = "main.css">
+</head>
+<body>
+    <h1>Welcome to Internet-Programming Store.</h1>
+    <p> &nbsp;
+        <a class = "nodec" href = "login.html">로그인</a>
+        </p><hr><br>
+    <form method="get" autocomplete="on" action = "signup.html">
+    <p>개인정보를 입력하세요. (필수)
+        <p><label>이름: 
+            <input name = "name" type = "text" size = "25" autofocus required>
+        </label></p>
+        <p><label>생일:
+            <input name = "date" type = "date" required>
+        </label></p>
+        <p><label>학번:
+            <input name = "student_id" type = "text" size = "11" required>
+        </label></p>
+        <p><label>학년:
+            <input name = "grade" type = "number" min = "1" max = "6" step = "1" value = "1">
+        </label></p>
+        <p><label>전화번호:
+            <input name = "tel" type = "text" placeholder = "010-xxxx-xxxx" pattern = "\d{3}-\d{4}-\d{4}" required>
+        </label></p>
+        <p><label>ID:
+            <input name = "id" type = "text" placeholder = "아이디를 입력하세요." size = "25" required> 
+        </label></p>
+        <p><label>비밀번호:
+            <input name = "password" type = "text" placeholder = "비밀번호를 입력하세요." size = "25" required>
+        </label></p>
+    </p>
+    <div>
+        <input class = "submit" type = "submit" value = "회원가입">
+        <input class = "cancel" type = "reset" value = "취소">
+    </div>
+    </form>
+</body>
+</html>
