@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Internet Programming Shop</title>
+    <link rel = "stylesheet" type = "text/css" href = "main.css">
+</head>
+<body>
+    <h1>Welcome to Internet Programming Shop</h1><br>
+    <nav>
+        <a href = "index.html">메인페이지</a>
+        <a href = "login.html">로그인</a>
+        <a href = "signup.html">회원가입</a>
+    </nav>
+    <hr style = "border: solid 2px black"><br><br>
+    <h2>Products</h2><br>
+    <hr style = "border: solid 2px black"><br>
+    <div id = "container">
+        <div id = "category">
+            <label>Choose a category.</label>
+            <select style="width: 100%;">
+                <option value = "All">All</option>
+                <option value = "Java">Java</option>
+                <option value = "C++">C++</option>
+                <option value = "Python">Python</option>
+            </select>
+            <label>Enter search term</label>
+            <input id = "text" type = "text">
+            <label>Choose a sort.</label>
+            <select style="width: 100%;">
+                <option value = "none">none</option>
+                <option value = "up">up</option>
+            </select>
+            <button id = "filter" style="width: 100%;">Filter results</button>
+        </div>
+        <div id = "products">
+        </div>
+    </div>
+</body>
+<script>
+    async function fetchData(){
+        const res = await fetch('product.json')
+        const data = res.json()
+        return data
+    }
+
+    async function main(){
+        const objects = await fetchData();
+        const productsNode = document.getElementById("products");
+
+        function loadImage(objects) {
+            for (const item of objects) {
+                let newNode1 = document.createElement("div");
+                newNode1.setAttribute("class", "image");
+
+                let newNode2 = document.createElement("img");
+                let src = "images/" + item.imgsrc;
+                newNode2.setAttribute("src", src);
+                newNode2.setAttribute("a", item.category);
+                newNode1.appendChild(newNode2);
+
+                let newNode3 = document.createElement("h2");
+                newNode3.innerHTML = item.name + "<br>" + item.price + "won";
+                newNode3.setAttribute("class", "image_text");
+                newNode1.appendChild(newNode3);
+
+                productsNode.appendChild(newNode1);
+            }
+        }
+
+        function buttonHandler() {
+            let category = document.querySelectorAll('select')[0].value;
+            let term = document.querySelector('#text').value;
+            let sort = document.querySelectorAll('select')[1].value;
+            let printingObjects = [];
+            if (category != "All") {
+                for (const item of objects) {
+                    if (item.category == category) printingObjects.push(item);
+                }
+            } else {
+                printingObjects = objects;
+            }
+            if (term) {
+                let bufferObjects = [];
+                term = term.toLowerCase();
+                for (const item of printingObjects) {
+                    if (item.name.toLowerCase().search(term) != -1) {
+                        bufferObjects.push(item);
+                    }
+                }
+                printingObjects = bufferObjects;
+            }
+            if (sort == "up") {
+                let bufferObjects = [];
+                bufferObjects = printingObjects.sort(function(a, b) {
+                    return a.price - b.price;
+                });
+                printingObjects = bufferObjects;
+            }
+            const productsNode = document.getElementById("products");
+            while(productsNode.firstChild) {
+                productsNode.removeChild(productsNode.firstChild);
+            }
+            loadImage(printingObjects);
+        }
+
+        document.getElementById("filter").addEventListener("click", buttonHandler);
+        document.getElementById("products").addEventListener("click", (e) => {
+            if (e.target.tagName === "IMG") {
+                const imgElement = e.target
+                const imgContainer = imgElement.closest(".image")
+                const h2 = imgContainer.querySelector("h2")
+                h2.style.zIndex = "1";
+            }
+        })
+        loadImage(objects);
+    }
+    
+    main()
+
+</script>
+</html>

@@ -1,0 +1,14 @@
+[
+    {"name": "JAVA FOR BEGGINERS GUIDE", "price": "20000", "imgsrc" : "java1.png", "category" : "Java"},
+    {"name": "Core and Advanced Java", "price": "25000", "imgsrc" : "java2.png", "category" : "Java"},
+    {"name": "A Textbook of Java Programming", "price": "30000", "imgsrc" : "java3.png", "category" : "Java"},
+    {"name": "The Complete Reference Java", "price": "15000", "imgsrc" : "java4.png", "category" : "Java"},
+    {"name": "The C++ Programming Language", "price": "25000", "imgsrc" : "c++1.png", "category" : "C++"},
+    {"name": "C++ Primer Plus", "price": "27000", "imgsrc" : "c++2.png", "category" : "C++"},
+    {"name": "For Bignners C++", "price": "29000", "imgsrc" : "c++3.png", "category" : "C++"},
+    {"name": "Effective Modern C++", "price": "31000", "imgsrc" : "c++4.png", "category" : "C++"},
+    {"name": "Python Programming", "price": "19000", "imgsrc" : "python1.png", "category" : "Python"},
+    {"name": "The Python Book", "price": "26000", "imgsrc" : "python2.png", "category" : "Python"},
+    {"name": "Learn Python the HARD WAY", "price": "35000", "imgsrc" : "python3.png", "category" : "Python"},
+    {"name": "Progrmmaing Python", "price": "28000", "imgsrc" : "python4.png", "category" : "Python"}
+]
