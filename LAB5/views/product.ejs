@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Internet Programming Shop</title>
+        <link rel="stylesheet" type="text/css" href="/main.css" />
+    </head>
+    <body>
+        <h1>Welcome to Internet Programming Shop</h1>
+        <br />
+        <nav>
+        <a href="/">메인페이지</a>
+        <a href="/login">로그인</a>
+        <a href="/signup">회원가입</a>
+        </nav>
+        <hr style="border: solid 2px black" />
+        <br />
+        <div id="container">
+            <div>
+                <img src="/img/<%= product.product_image %>">
+            </div>
+            <div>
+                <p>
+                    <h2>product_id : <%= product.product_id %></h2>
+                    <h2>product_title : <%= product.product_title %></h2>
+                    <h2>product_price : <%= product.product_price %></h2>
+                    <h2>product_image : <%= product.product_image %></h2>
+                    <h2>product_category : <%= product.product_category %></h2>
+                </p>
+                <p id="review"></p>
+            </div>
+            <div>
+                <form action="/product/<%= product.product_id %>" method="POST">
+                    <label>Submit your review:<br>
+                        <input name="review" id="review" type = "text">
+                    </label>
+                    <button type="submit">Submit</button>
+                </form>
+                <div id="feedback">
+                    <h3>Feedback</h3>
+                    <ul>
+                    <% feedbacks.forEach((feedback) => {%>
+                        <p><%= feedback %></p>
+                    <% }) %>
+                    </ul>
+                </div>
+            </div>
+    </div>
+</body>
+</html>
+<script>
+    let reviewData = JSON.parse(JSON.stringify(review));
+    console.log(reviewData);
+    let reviewString = reviewData[1];
+    let feedback = reviewData[2];
+</script>

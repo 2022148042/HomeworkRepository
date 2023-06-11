@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Internet Programming Shop</title>
+        <link rel="stylesheet" type="text/css" href="main.css" />
+    </head>
+    <body>
+        <h1>Welcome to Internet Programming Shop</h1>
+        <br />
+        <nav>
+        <a href="/">메인페이지</a>
+        <a href="/login">로그인</a>
+        <a href="/signup">회원가입</a>
+        </nav>
+        <hr style="border: solid 2px black" />
+        <br /><br />
+        <h2>Products</h2>
+        <br />
+        <hr style="border: solid 2px black" />
+        <br />
+        <div id="container">
+            <form id="category" action="/" method="GET">
+                <label>Choose a category.</label>
+                <select name="category" style="width: 100%">
+                  <option value="All">All</option>
+                  <option value="Java">Java</option>
+                  <option value="C++">C++</option>
+                  <option value="Python">Python</option>
+                </select>
+                <label>Enter search term</label>
+                <input name="term" id="text" type="text" value="" />
+                <label>Choose a sort.</label>
+                <select name="sort" style="width: 100%">
+                  <option value="none">none</option>
+                  <option value="up">up</option>
+                </select>
+                <button type="submit" id="filter" style="width: 100%">Filter results</button>
+              </form>
+        <div id="products">
+            <% products.forEach((product) => {%>
+                <a href='/product/<%= product.product_id %>'>
+                    <img src = 'img/<%= product.product_image %>' alt = "<%= product.product_category %>">
+                </a>
+            <% }) %>
+          </div>
+        </div>
+        
+    </body>
+</html>
